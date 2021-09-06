@@ -28,3 +28,4 @@ Route::get('cashier/home', [App\Http\Controllers\HomeController::class, 'cashier
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/registrasi_pelanggan', [App\Http\Controllers\RegistrasiPelanggan::class, 'index']);
+Route::get('/admin/manajemen_outlet', [App\Http\Controllers\ManajemenOutlet::class, 'index']);

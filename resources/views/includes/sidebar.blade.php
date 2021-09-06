@@ -17,7 +17,7 @@
             </li>
             <li class="menu-header">Manajemen Toko</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-store"></i> <span>Manajemen Outlet</span></a>
+                <a href="{{ url('/admin/manajemen_outlet') }}" class="nav-link"><i class="fas fa-store"></i> <span>Manajemen Outlet</span></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link"><i class="fas fa-cube"></i> <span>Manajemen Produk</span></a>
@@ -44,7 +44,7 @@
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
+                <a href="{{ url('/admin/registrasi_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
                         Pelanggan</span></a>
             </li>
             <li class="menu-header">Transaksi</li>
