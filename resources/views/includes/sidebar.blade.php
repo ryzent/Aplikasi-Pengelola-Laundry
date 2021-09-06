@@ -8,51 +8,51 @@
         </div>
         <ul class="sidebar-menu">
             @if (auth()->user()->role == 'admin')
-            <li class="active"><a class="nav-link" href="{{ url('/admin/home') }}"><i class="fas fa-columns"></i>
+            <li class="active"><a class="nav-link" href="{{ url('/admin/index') }}"><i class="fas fa-columns"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item">
-                <a href="{{ url('/admin/registrasi_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
+                <a href="{{ url('/manajemen_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Manajemen
                     Pelanggan</span></a>
             </li>
             <li class="menu-header">Manajemen Toko</li>
             <li class="nav-item">
-                <a href="{{ url('/admin/manajemen_outlet') }}" class="nav-link"><i class="fas fa-store"></i> <span>Manajemen Outlet</span></a>
+                <a href="{{ url('/manajemen_outlet') }}" class="nav-link"><i class="fas fa-store"></i> <span>Manajemen Outlet</span></a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-cube"></i> <span>Manajemen Produk</span></a>
+                <a href="{{ url('/manajemen_produk') }}" class="nav-link"><i class="fas fa-cube"></i> <span>Manajemen Produk</span></a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-user"></i> <span>Manajemen Pegawai</span></a>
+                <a href="{{ url('/manajemen_pegawai') }}" class="nav-link"><i class="fas fa-user"></i> <span>Manajemen Pegawai</span></a>
             </li>
             <li class="menu-header">Transaksi</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
+                <a href="{{ url('/transaksi') }}" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
+                <a href="{{ url('/laporan') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
             @elseif (auth()->user()->role == 'owner')
             <li class="active"><a class="nav-link" href="#"><i class="fas fa-columns"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Transaksi</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
+                <a href="{{ url('/laporan') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
             @elseif (auth()->user()->role == 'cashier')
             <li class="active"><a class="nav-link" href="#"><i class="fas fa-columns"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item">
-                <a href="{{ url('/admin/registrasi_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
+                <a href="{{ url('/manajemen_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Manajemen
                         Pelanggan</span></a>
             </li>
             <li class="menu-header">Transaksi</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
+                <a href="{{ url('/transaksi') }}" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
+                <a href="{{ url('/laporan') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
             @endif
 

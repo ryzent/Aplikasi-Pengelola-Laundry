@@ -27,13 +27,13 @@ class HomeController extends Controller
     }
 
     public function admin(){
-        return view('admin.home');
+        return view('pages.admin');
     }
 
     public function owner(){
-        return view('owner.home');
+        return view('pages.owner');
     }
     public function cashier(){
-        return view('cashier.home');
+        return view('pages.cashier');
     }
 }

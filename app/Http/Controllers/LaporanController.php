@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ManajemenOutlet extends Controller
+class LaporanController extends Controller
 {
     //
     public function index(){
-        return view('admin.manajemen_outlet');
+        return view('pages.laporan');
     }
 }
