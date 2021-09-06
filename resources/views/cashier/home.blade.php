@@ -1,18 +1,8 @@
-@extends('layouts.master');
-@section('title', 'Cashier Dashboard');
+@extends('layouts.master')
+@section('title', 'Admin Dashboard')
 
-@section('content');
-            <!-- Main Content -->
-            <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>Blank Page</h1>
-                    </div>
+@section('content')
 
-                    <div class="section-body">
-                    </div>
-                </section>
-            </div>
-            
+@section('header_title', 'Kasir')
+
 @endsection
-  
