@@ -55,7 +55,7 @@ class LoginController extends Controller
             } else if (auth()->user()->role == 'cashier') {
                 return redirect()->route('cashier.home');
             } else {
-                return redirect()->route('login')->with('error',"Email atau password tidak ada!");
+                return redirect()->route('home');
             }
             
         } else{
