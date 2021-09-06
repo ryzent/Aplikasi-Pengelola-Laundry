@@ -8,11 +8,11 @@
         </div>
         <ul class="sidebar-menu">
             @if (auth()->user()->role == 'admin')
-            <li class="active"><a class="nav-link" href="#"><i class="fas fa-columns"></i>
+            <li class="active"><a class="nav-link" href="{{ url('/admin/home') }}"><i class="fas fa-columns"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
+                <a href="{{ url('/admin/registrasi_pelanggan') }}" class="nav-link"><i class="fas fa-users"></i><span>Registrasi
                     Pelanggan</span></a>
             </li>
             <li class="menu-header">Manajemen Toko</li>

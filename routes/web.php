@@ -26,3 +26,5 @@ Route::get('owner/home', [App\Http\Controllers\HomeController::class, 'owner'])-
 Route::get('cashier/home', [App\Http\Controllers\HomeController::class, 'cashier'])->name('cashier.home')->middleware('cashier');
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/registrasi_pelanggan', [App\Http\Controllers\RegistrasiPelanggan::class, 'index']);
