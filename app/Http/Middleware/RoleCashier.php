@@ -16,7 +16,7 @@ class RoleCashier
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'cashier'){
+        if(auth()->user()->role == 'kasir'){
             return $next($request);
         }
 

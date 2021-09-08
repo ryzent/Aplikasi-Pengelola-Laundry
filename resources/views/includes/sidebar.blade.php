@@ -39,7 +39,7 @@
             <li class="nav-item">
                 <a href="{{ url('/laporan') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
-            @elseif (auth()->user()->role == 'cashier')
+            @elseif (auth()->user()->role == 'kasir')
             <li class="active"><a class="nav-link" href="#"><i class="fas fa-columns"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Manajemen Pelanggan</li>

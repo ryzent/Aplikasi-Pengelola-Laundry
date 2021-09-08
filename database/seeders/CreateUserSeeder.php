@@ -26,7 +26,7 @@ class CreateUserSeeder extends Seeder
             [
                 'name' => 'Kasir',
                 'email' => 'kasir@kasir.com',
-                'role' => 'cashier',
+                'role' => 'kasir',
                 'password' => bcrypt('123456'),
             ],
             [
