@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,17 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function admin(){
-        return view('pages.admin');
-    }
-
-    public function owner(){
-        return view('pages.owner');
-    }
-    public function cashier(){
-        return view('pages.cashier');
+        if(auth()->user()->role == "admin"){
+            return redirect()->route('admin.home');
+        } else if (auth()->user()->role == 'owner') {
+            return redirect()->route('owner.home');
+        } else if (auth()->user()->role == 'kasir') {
+            return redirect()->route('cashier.home');
+        } else {
+            return redirect()->route('home');
+        }
     }
 }

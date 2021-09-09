@@ -19,24 +19,14 @@
 
             @include('includes.sidebar')
 
-            <div class="main-content">
-                <section class="section" style="margin-top: 0px">
-                    <div class="section-header">
-                        <h1>@yield('header_title')</h1>
-                    </div>
-
-                    <div class="row">
-                        @yield('content')
-                    </div>
-                </section>
-            </div>
-
+            @yield('content')
 
             @include('includes.footer')
         </div>
     </div>
 
     @include('includes.scripts')
+    @stack('addon-script')
 
 </body>
 

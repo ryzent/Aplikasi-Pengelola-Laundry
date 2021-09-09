@@ -8,6 +8,6 @@ class TransaksiController extends Controller
 {
     //
     public function index(){
-        return view('pages.transaksi');
+        return view('pages.transaksi.index');
     }
 }

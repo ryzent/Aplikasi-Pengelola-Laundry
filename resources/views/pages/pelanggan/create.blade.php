@@ -1,11 +1,12 @@
 @extends('layouts.master')
-@section('title', 'Dashboard Pemilik')
+@section('title', 'Manajemen Pelanggan')
 
 @section('content')
+
     <div class="main-content">
         <section class="section" style="margin-top: 0px">
             <div class="section-header">
-                <h1>Dashboard Pemilik</h1>
+                <h1>Tambah member baru</h1>
             </div>
 
 
@@ -16,3 +17,4 @@
     </div>
 
 @endsection
+

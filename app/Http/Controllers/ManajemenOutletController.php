@@ -8,6 +8,10 @@ class ManajemenOutletController extends Controller
 {
     //
     public function index(){
-        return view('pages.manajemen_outlet');
+        return view('pages.toko.index');
+    }
+
+    public function create(){
+        return view('pages.toko.create');
     }
 }

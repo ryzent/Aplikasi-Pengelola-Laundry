@@ -8,6 +8,10 @@ class ManajemenPelangganController extends Controller
 {
     //
     public function index(){
-        return view('pages.manajemen_pelanggan');
+        return view('pages.pelanggan.index');
+    }
+
+    public function create(){
+        return view('pages.pelanggan.create');
     }
 }

@@ -8,6 +8,10 @@ class ManajemenProdukController extends Controller
 {
     //
     public function index(){
-        return view('pages.manajemen_produk');
+        return view('pages.produk.index');
+    }
+
+    public function create(){
+        return view('pages.produk.create');
     }
 }
