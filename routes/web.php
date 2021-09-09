@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ManajemenOutletController;
+use App\Http\Controllers\ManajemenPelangganController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManajemenProdukController;
+use App\Http\Controllers\ManajemenPegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,19 +31,21 @@ Route::get('cashier/index', [App\Http\Controllers\KasirController::class, 'index
 
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('manajemen_pelanggan', [App\Http\Controllers\ManajemenPelangganController::class, 'index']);
-Route::get('manajemen_pelanggan/create', [App\Http\Controllers\ManajemenPelangganController::class, 'create']);
+// Route::get('manajemen_pelanggan', [App\Http\Controllers\ManajemenPelangganController::class, 'index']);
+// Route::get('manajemen_pelanggan/create', [App\Http\Controllers\ManajemenPelangganController::class, 'create']);
+Route::resource('manajemen_pelanggan', ManajemenPelangganController::class);
 
-Route::get('manajemen_outlet', [App\Http\Controllers\ManajemenOutletController::class, 'index']);
-Route::get('manajemen_outlet/create', [App\Http\Controllers\ManajemenOutletController::class, 'create']);
+// Route::get('manajemen_outlet', [App\Http\Controllers\ManajemenOutletController::class, 'index']);
+// Route::get('manajemen_outlet/create', [App\Http\Controllers\ManajemenOutletController::class, 'create']);
+Route::resource('manajemen_outlet', ManajemenOutletController::class);
 
-Route::get('manajemen_produk', [App\Http\Controllers\ManajemenProdukController::class, 'index']);
-Route::get('manajemen_produk/create', [App\Http\Controllers\ManajemenProdukController::class, 'create']);
-//Route::resource('manajemen_produk', 'ManajemenProdukController');
+// Route::get('manajemen_produk', [App\Http\Controllers\ManajemenProdukController::class, 'index']);
+// Route::get('manajemen_produk/create', [App\Http\Controllers\ManajemenProdukController::class, 'create']);
+Route::resource('manajemen_produk', ManajemenProdukController::class);
 
-Route::get('manajemen_pegawai', [App\Http\Controllers\ManajemenPegawaiController::class, 'index']);
-Route::get('manajemen_pegawai/create', [App\Http\Controllers\ManajemenPegawaiController::class, 'create']);
-//Route::resource('manajemen_pegawai', 'ManajemenPegawaiController');
+// Route::get('manajemen_pegawai', [App\Http\Controllers\ManajemenPegawaiController::class, 'index']);
+// Route::get('manajemen_pegawai/create', [App\Http\Controllers\ManajemenPegawaiController::class, 'create']);
+Route::resource('manajemen_pegawai', ManajemenPegawaiController::class);
 
 
 Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
