@@ -19,23 +19,23 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama</th>
-                                    <th>Username</th>
+                                    <th>Email</th>
                                     <th>Toko</th>
                                     <th>Role</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @forelse ($kelas as $kls)
-                                    <tr>
-                                        <td>{{ $kls->id}} </td>
-                                        <td>{{ $kls->class}} </td>
-                                    </tr>
-
-                                    @empty
-
-                                    @endforelse
-                                </tbody> --}}
+                                <tbody>
+                                    @foreach($pegawai as $pg)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $pg->name}} </td>
+                                            <td>{{ $pg->email}} </td>
+                                            <td>{{ $pg->toko['nama']}} </td>
+                                            <td>{{ $pg->role}} </td>
+                                        </tr>
+                                    @endforeach
+                                 </tbody>
                             </table>
                         </div>
                     </div>

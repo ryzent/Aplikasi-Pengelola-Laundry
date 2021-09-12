@@ -13,15 +13,16 @@
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                <form action="#">
+                <form action="{{ route('manajemen_outlet.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-body">
                         <div class="form-group">
                           <label>Nama Cabang</label>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" name="nama">
                         </div>
                         <div class="form-group">
                             <label>Alamat Cabang</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="alamat">
                           </div>
                         <div class="form-group">
                           <label>Nomor Telepon</label>
@@ -31,7 +32,7 @@
                                 <i class="fas fa-phone"></i>
                               </div>
                             </div>
-                            <input type="text" class="form-control phone-number">
+                            <input type="text" class="form-control phone-number" name="tlp">
                           </div>
                         </div>
                         <button type="submit" class="btn btn-primary">

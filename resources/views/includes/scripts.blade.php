@@ -12,6 +12,9 @@
     <script src="../assets/js/stisla.js"></script>
 
     <!-- JS Libraies -->
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
 
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>

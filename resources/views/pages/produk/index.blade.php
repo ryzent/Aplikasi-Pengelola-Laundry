@@ -20,23 +20,24 @@
                                 <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Toko</th>
                                     <th>Nama Paket</th>
                                     <th>Jenis</th>
                                     <th>Harga</th>
+                                    <th>Toko</th>
+                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @forelse ($kelas as $kls)
-                                    <tr>
-                                        <td>{{ $kls->id}} </td>
-                                        <td>{{ $kls->class}} </td>
-                                    </tr>
-
-                                    @empty
-
-                                    @endforelse
-                                </tbody> --}}
+                                <tbody>
+                                    @foreach($produks as $pr)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $pr->nama_paket}} </td>
+                                            <td>{{ $pr->jenis}} </td>
+                                            <td>{{ $pr->harga}} </td>
+                                            <td>{{ $pr->toko['nama']}} </td>
+                                        </tr>
+                                    @endforeach
+                                 </tbody>
                             </table>
                         </div>
                     </div>
@@ -48,7 +49,5 @@
 @endsection
 
 @push('addon-script')
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 @endpush

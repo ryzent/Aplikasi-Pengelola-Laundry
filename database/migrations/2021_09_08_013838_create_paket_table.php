@@ -13,7 +13,7 @@ class CreatePaketTable extends Migration
      */
     public function up()
     {
-        Schema::create('paket', function (Blueprint $table) {
+        Schema::create('produks', function (Blueprint $table) {
             $table->id();
 
             $table->integer('id_outlet');

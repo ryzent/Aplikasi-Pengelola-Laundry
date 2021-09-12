@@ -23,19 +23,20 @@
                                     <th>Alamat</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Telepon</th>
+                                    <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @forelse ($kelas as $kls)
-                                    <tr>
-                                        <td>{{ $kls->id}} </td>
-                                        <td>{{ $kls->class}} </td>
-                                    </tr>
-
-                                    @empty
-
-                                    @endforelse
-                                </tbody> --}}
+                                <tbody>
+                                    @foreach($member as $mb)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $mb->nama}} </td>
+                                            <td>{{ $mb->alamat}} </td>
+                                            <td>{{ $mb->jenis_kelamin}} </td>
+                                            <td>{{ $mb->tlp}} </td>
+                                        </tr>
+                                    @endforeach
+                                 </tbody>
                             </table>
                         </div>
                     </div>

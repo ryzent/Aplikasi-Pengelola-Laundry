@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManajemenOutletController;
 use App\Http\Controllers\ManajemenPelangganController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManajemenProdukController;
 use App\Http\Controllers\ManajemenPegawaiController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,7 @@ Route::resource('manajemen_produk', ManajemenProdukController::class);
 Route::resource('manajemen_pegawai', ManajemenPegawaiController::class);
 
 
-Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
+//Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
+Route::resource('transaksi', TransaksiController::class);
+
 Route::get('laporan', [App\Http\Controllers\LaporanController::class, 'index']);

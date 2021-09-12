@@ -13,7 +13,7 @@ class CreateOutletTable extends Migration
      */
     public function up()
     {
-        Schema::create('outlet', function (Blueprint $table) {
+        Schema::create('outlets', function (Blueprint $table) {
             $table->id();
 
             $table->string('nama');

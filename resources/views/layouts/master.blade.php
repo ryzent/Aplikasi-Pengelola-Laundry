@@ -25,6 +25,7 @@
         </div>
     </div>
 
+    @stack('prepend-script')
     @include('includes.scripts')
     @stack('addon-script')
 
