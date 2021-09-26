@@ -1,5 +1,7 @@
 "use strict";
 
+$(".do-nicescrol").niceScroll();
+
 // ChartJS
 if(window.Chart) {
   Chart.defaults.global.defaultFontFamily = "'Nunito', 'Segoe UI', 'Arial'";

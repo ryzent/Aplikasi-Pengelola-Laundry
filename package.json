@@ -10,20 +10,32 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
-        "bootstrap": "^4.6.0",
-        "jquery": "^3.6",
-        "laravel-mix": "^6.0.6",
+        "@popperjs/core": "^2.10.1",
+        "axios": "^0.21.4",
+        "jquery": "^3.6.0",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
-        "postcss": "^8.1.14",
+        "postcss": "^8.3.8",
         "resolve-url-loader": "^4.0.0",
-        "sass": "^1.32.11",
-        "sass-loader": "^11.0.1"
+        "sass": "^1.42.1",
+        "sass-loader": "^11.1.1",
+        "webpack": "^5.54.0"
     },
     "dependencies": {
+        "bootstrap": "^5.1.1",
         "chart.js": "^3.5.1",
         "datatables": "^1.10.18",
-        "datatables.net": "^1.11.2"
+        "datatables.net": "^1.11.3",
+        "datatables.net-bs5": "^1.11.3",
+        "datatables.net-buttons-bs5": "^2.0.1",
+        "datatables.net-responsive-bs5": "^2.2.9",
+        "datatables.net-searchbuilder-bs5": "^1.2.2",
+        "datatables.net-searchpanes-bs5": "^1.4.0",
+        "jquery.nicescroll": "^3.7.6",
+        "jszip": "^3.7.1",
+        "laravel-mix": "^6.0.31",
+        "moment": "^2.29.1",
+        "momentjs": "^2.0.0",
+        "pdfmake": "^0.2.2"
     }
 }
