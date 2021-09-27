@@ -10,22 +10,26 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "@popperjs/core": "^2.10.1",
         "axios": "^0.21.4",
+        "datatables.net": "^1.11.3",
         "jquery": "^3.6.0",
+        "jquery-ui": "^1.12.1",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
         "postcss": "^8.3.8",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.42.1",
         "sass-loader": "^11.1.1",
+        "select2": "^4.1.0-rc.0",
+        "sweetalert2": "^11.1.7",
         "webpack": "^5.54.0"
     },
     "dependencies": {
         "bootstrap": "^5.1.1",
         "chart.js": "^3.5.1",
         "datatables": "^1.10.18",
-        "datatables.net": "^1.11.3",
         "datatables.net-bs5": "^1.11.3",
         "datatables.net-buttons-bs5": "^2.0.1",
         "datatables.net-responsive-bs5": "^2.2.9",

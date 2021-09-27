@@ -11,6 +11,12 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('datatables.net-bs5');
+    require('select2');
+    $('select').select2();
+    require('moment');
+    require('jquery.nicescroll');
+    require('chart.js');
 } catch (e) {}
 
 /**

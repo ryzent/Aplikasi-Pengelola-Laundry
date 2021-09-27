@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app do-nicescrol">
         <div class="main-wrapper">
             <div class="navbar-bg"></div>
 
