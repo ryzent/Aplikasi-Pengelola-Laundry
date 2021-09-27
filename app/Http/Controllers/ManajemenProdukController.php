@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Outlet;
+use DataTables;
 
 class ManajemenProdukController extends Controller
 {
@@ -18,6 +19,11 @@ class ManajemenProdukController extends Controller
             'produks' => $produk,
             'toko' => $toko
         ]);
+    }
+
+    public function json(Request $request){
+        $member = Produk::all();
+        return DataTables::of($member)->make(true);
     }
 
     public function create(){

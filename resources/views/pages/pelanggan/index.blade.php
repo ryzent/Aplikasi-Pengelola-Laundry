@@ -3,52 +3,66 @@
 @section('header_title', 'Manajemen Pelanggan')
 
 @section('content')
-    <div class="main-content">
-        <section class="section" style="margin-top: 0px">
-            <div class="section-header">
-                <h1>Manajemen Pelanggan</h1>
-            </div>
+<div class="main-content" id="konten">
+    <section class="section" style="margin-top: 0px">
+        <div class="section-header">
+            <h1>Manajemen Pelanggan</h1>
+        </div>
 
-            <a href="{{url('manajemen_pelanggan/create')}}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i>Tambah member baru</a>
+        <a href="{{url('manajemen_pelanggan/create')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+                class="fas fa-plus"></i>Tambah member baru</a>
 
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="card-body table-responsive-sm">
-                            <table id="class-table" class="table table-bordered" width="100%" collspacing="0">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="pelanggan-table" class="table table-bordered" width="100%" collspacing="0">
                                 <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Telepon</th>
-                                    <th>Aksi</th>
-                                </tr>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Telepon</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($member as $mb)
-                                        <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $mb->nama}} </td>
-                                            <td>{{ $mb->alamat}} </td>
-                                            <td>{{ $mb->jenis_kelamin}} </td>
-                                            <td>{{ $mb->tlp}} </td>
-                                        </tr>
-                                    @endforeach
-                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
 @endsection
 
 @push('addon-script')
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+<script>
+    $(function(){
+
+        $('#pelanggan-table').DataTable({
+            pageLength : 5,
+            processing: true,
+            serverSide: true,
+
+            ajax: '/manajemen_pelanggan/json',
+            columns: [
+                {"data": "id",
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1 +".";
+                }
+            },
+                { data: 'nama', name: 'nama'},
+                { data: 'alamat', name: 'alamat'},
+                { data: 'jenis_kelamin', name: 'jenis_kelamin'},
+                { data: 'tlp', name: 'tlp'}
+            ],
+        });
+    });
+</script>
+
 @endpush

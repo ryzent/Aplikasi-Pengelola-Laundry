@@ -34,18 +34,22 @@ Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name(
 
 // Route::get('manajemen_pelanggan', [App\Http\Controllers\ManajemenPelangganController::class, 'index']);
 // Route::get('manajemen_pelanggan/create', [App\Http\Controllers\ManajemenPelangganController::class, 'create']);
+Route::get('manajemen_pelanggan/json', [App\Http\Controllers\ManajemenPelangganController::class, 'json']);
 Route::resource('manajemen_pelanggan', ManajemenPelangganController::class);
 
 // Route::get('manajemen_outlet', [App\Http\Controllers\ManajemenOutletController::class, 'index']);
 // Route::get('manajemen_outlet/create', [App\Http\Controllers\ManajemenOutletController::class, 'create']);
+Route::get('manajemen_outlet/json', [App\Http\Controllers\ManajemenOutletController::class, 'json']);
 Route::resource('manajemen_outlet', ManajemenOutletController::class);
 
 // Route::get('manajemen_produk', [App\Http\Controllers\ManajemenProdukController::class, 'index']);
 // Route::get('manajemen_produk/create', [App\Http\Controllers\ManajemenProdukController::class, 'create']);
+Route::get('manajemen_produk/json', [App\Http\Controllers\ManajemenProdukController::class, 'json']);
 Route::resource('manajemen_produk', ManajemenProdukController::class);
 
 // Route::get('manajemen_pegawai', [App\Http\Controllers\ManajemenPegawaiController::class, 'index']);
 // Route::get('manajemen_pegawai/create', [App\Http\Controllers\ManajemenPegawaiController::class, 'create']);
+Route::get('manajemen_pegawai/json', [App\Http\Controllers\ManajemenPegawaiController::class, 'json']);
 Route::resource('manajemen_pegawai', ManajemenPegawaiController::class);
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use DataTables;
 
 class ManajemenPelangganController extends Controller
 {
@@ -11,6 +12,11 @@ class ManajemenPelangganController extends Controller
     public function index(){
         $member = Member::all();
         return view('pages.pelanggan.index',compact('member'));
+    }
+
+    public function json(Request $request){
+        $member = Member::all();
+        return DataTables::of($member)->make(true);
     }
 
     public function create(){

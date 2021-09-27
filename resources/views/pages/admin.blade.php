@@ -131,6 +131,5 @@
 @endsection
 
 @push('addon-script')
-    <script src="..\node_modules\chart.js\dist\chart.min.js"></script>
-    <script src="..\assets\js\page\modules-chartjs.js"></script>
+
 @endpush

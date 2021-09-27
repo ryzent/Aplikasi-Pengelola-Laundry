@@ -25,7 +25,7 @@
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach($pegawai as $pg)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
@@ -35,7 +35,7 @@
                                             <td>{{ $pg->role}} </td>
                                         </tr>
                                     @endforeach
-                                 </tbody>
+                                 </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -48,7 +48,27 @@
 @endsection
 
 @push('addon-script')
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script>
+    $(function(){
+
+        $('#pelanggan-table').DataTable({
+            pageLength : 5,
+            processing: true,
+            serverSide: true,
+
+            ajax: '/manajemen_pegawai/json',
+            columns: [
+                {"data": "id",
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1 +".";
+                    }
+                },
+                { data: 'name', name: 'name'},
+                { data: 'email', name: 'email'},
+                { data: 'id_outlet.nama', name: 'toko'},
+                { data: 'role', name: 'role'}
+            ],
+        });
+    });
+</script>
 @endpush

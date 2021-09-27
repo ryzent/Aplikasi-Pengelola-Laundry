@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Outlet;
+use DataTables;
 
 class ManajemenPegawaiController extends Controller
 {
@@ -17,6 +18,11 @@ class ManajemenPegawaiController extends Controller
             'toko' => $toko,
             'pegawai' => $user
         ]);
+    }
+
+    public function json(Request $request){
+        $member = User::all();
+        return DataTables::of($member)->make(true);
     }
 
     public function create(){

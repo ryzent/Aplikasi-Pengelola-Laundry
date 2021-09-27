@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Outlet;
+use DataTables;
 
 class ManajemenOutletController extends Controller
 {
@@ -12,6 +13,11 @@ class ManajemenOutletController extends Controller
     public function index(){
         $toko = Outlet::all();
         return view('pages.toko.index', compact('toko'));
+    }
+
+    public function json(Request $request){
+        $member = Outlet::all();
+        return DataTables::of($member)->make(true);
     }
 
     public function create(){

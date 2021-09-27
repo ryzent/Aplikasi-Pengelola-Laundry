@@ -18,7 +18,7 @@ class CreateMemberTable extends Migration
 
             $table->string('nama');
             $table->text('alamat');
-            $table->enum('jenis_kelamin',['L','P']);
+            $table->string('jenis_kelamin');
             $table->string('tlp');
 
             $table->timestamps();

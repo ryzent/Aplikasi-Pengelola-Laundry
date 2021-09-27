@@ -16,7 +16,7 @@
                 <div class="col-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-body table-responsive-sm">
-                            <table id="class-table" class="table table-bordered" width="100%" collspacing="0">
+                            <table id="produk-table" class="table table-bordered" width="100%" collspacing="0">
                                 <thead>
                                 <tr>
                                     <th>No.</th>
@@ -27,7 +27,7 @@
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach($produks as $pr)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
@@ -37,7 +37,7 @@
                                             <td>{{ $pr->toko['nama']}} </td>
                                         </tr>
                                     @endforeach
-                                 </tbody>
+                                 </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -49,5 +49,27 @@
 @endsection
 
 @push('addon-script')
+<script>
+    $(function(){
 
+        $('#produk-table').DataTable({
+            pageLength : 5,
+            processing: true,
+            serverSide: true,
+
+            ajax: '/manajemen_produk/json',
+            columns: [
+                {"data": "id",
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1 +".";
+                }
+            },
+                { data: 'nama_paket', name: 'nama_paket'},
+                { data: 'jenis', name: 'jenis'},
+                { data: 'harga', name: 'harga'},
+                { data: 'id_outlet.nama', name: 'id_outlet.nama'}
+            ],
+        });
+    });
+</script>
 @endpush
