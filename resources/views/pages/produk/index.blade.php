@@ -81,7 +81,61 @@
                     data: 'id_outlet',
                     name: 'id_outlet'
                 },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
             ],
+        });
+    });
+
+    $(document).ready(function () {
+
+
+        var id;
+
+        $(document).on('click', '.delete', function () {
+            id = $(this).attr('id');
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "Data toko ini akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "manajemen_produk/destroy/" + id,
+                        beforeSend: function () {
+                            $('#ok_button').text('Deleting...');
+                        },
+                        success: function (data) {
+                            setTimeout(function () {
+                                $('#confirmModal').modal('hide');
+                                $('#produk-table').DataTable().ajax.reload();
+                            }, 2000);
+                        }
+                    })
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: "Data toko berhasil dihapus.",
+                        icon: 'success',
+                        showCancelButton: false,
+                        showCloseButton: false,
+                        showConfirmButton: false,
+                        timer: 2000,
+                    })
+                }
+            })
+        });
+
+        $('#ok_button').click(function () {
+
         });
     });
 

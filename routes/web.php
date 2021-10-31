@@ -46,6 +46,7 @@ Route::prefix('admin')
         // Route::get('manajemen_produk', [App\Http\Controllers\ManajemenProdukController::class, 'index']);
         // Route::get('manajemen_produk/create', [App\Http\Controllers\ManajemenProdukController::class, 'create']);
         Route::get('manajemen_produk/json', [App\Http\Controllers\ManajemenProdukController::class, 'json']);
+        Route::get('manajemen_produk/destroy/{id}', [App\Http\Controllers\ManajemenProdukController::class, 'destroy']);
         Route::resource('manajemen_produk', ManajemenProdukController::class);
 
         // Route::get('manajemen_pegawai', [App\Http\Controllers\ManajemenPegawaiController::class, 'index']);

@@ -24,7 +24,11 @@ class ManajemenProdukController extends Controller
 
     public function json(Request $request){
         $member = Produk::all();
-        return DataTables::of($member)->make(true);
+        return DataTables::of($member)
+        ->addColumn('action', function ($row) {
+            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
+            return $btn;
+        })->toJson();
     }
 
     public function create(){
@@ -95,6 +99,8 @@ class ManajemenProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Produk::findOrFail($id);
+        Alert::success('Berhasil', 'Data berhasil dihapus');
+        $data->delete();
     }
 }
