@@ -30,6 +30,7 @@
     <!-- Template JS File -->
     <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
     <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+    @stack('addon-script')
 
 </body>
 

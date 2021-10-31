@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Jenis Produk</label>
-                                <select class="form-control" name="jenis">
+                                <select class="form-control select2" name="jenis">
                                     <option value="kiloan">Kiloan</option>
                                     <option value="selimut">Selimut</option>
                                     <option value="bed_cover">Bed Cover</option>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Cabang Toko</label>
-                                <select class="form-control" name="id_outlet">
+                                <select class="form-control select2" name="id_outlet">
                                     @foreach ($toko as $tk)
                                     <option value="{{$tk->id}}">{{$tk->nama}}</option>
                                     @endforeach

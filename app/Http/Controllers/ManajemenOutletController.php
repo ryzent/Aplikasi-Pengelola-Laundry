@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Outlet;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ManajemenOutletController extends Controller
 {
@@ -17,7 +18,11 @@ class ManajemenOutletController extends Controller
 
     public function json(Request $request){
         $member = Outlet::all();
-        return DataTables::of($member)->make(true);
+        return DataTables::of($member)
+        ->addColumn('action', function ($row) {
+            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
+            return $btn;
+        })->toJson();
     }
 
     public function create(){
@@ -37,7 +42,8 @@ class ManajemenOutletController extends Controller
             'alamat' => 'required'
         ]);
         Outlet::create($request->all());
-        return redirect('/manajemen_outlet')->with('status','data berhasil ditambahkan');
+        Alert::success('Berhasil', 'Data berhasil disimpan');
+        return redirect()->route('manajemen_outlet.index');
     }
 
     /**
@@ -82,6 +88,8 @@ class ManajemenOutletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Outlet::findOrFail($id);
+        Alert::success('Berhasil', 'Data berhasil dihapus');
+        $data->delete();
     }
 }

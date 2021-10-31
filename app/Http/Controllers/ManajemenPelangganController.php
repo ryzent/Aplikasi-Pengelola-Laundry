@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ManajemenPelangganController extends Controller
 {
@@ -16,7 +17,12 @@ class ManajemenPelangganController extends Controller
 
     public function json(Request $request){
         $member = Member::all();
-        return DataTables::of($member)->make(true);
+        return DataTables::of($member)
+        ->addColumn('action', function ($row) {
+            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
+            $btn = $btn.'<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm">Edit</a>';
+            return $btn;
+        })->toJson();
     }
 
     public function create(){
@@ -39,7 +45,8 @@ class ManajemenPelangganController extends Controller
            'tlp' => 'required',
        ]);
        Member::create($request->all());
-       return redirect('/manajemen_pelanggan')->with('status','data berhasil ditambahkan');
+       Alert::success('Berhasil', 'Data berhasil disimpan');
+       return redirect()->route('manajemen_pelanggan.index');
     }
 
     /**
@@ -61,7 +68,8 @@ class ManajemenPelangganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member = Member::findOrFail($id);
+        return view('pages.pelanggan.edit',compact('member'));
     }
 
     /**
@@ -73,7 +81,13 @@ class ManajemenPelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $member = Member::findOrFail($id);
+
+        $member->update($data);
+        Alert::success('Berhasil', 'Data member berhasil diperbarui');
+        return redirect()->route('manajemen_pelanggan.index');
+
     }
 
     /**
@@ -84,6 +98,8 @@ class ManajemenPelangganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Member::findOrFail($id);
+        Alert::success('Berhasil', 'Data berhasil dihapus');
+        $data->delete();
     }
 }

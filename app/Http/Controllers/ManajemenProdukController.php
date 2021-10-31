@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Outlet;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ManajemenProdukController extends Controller
 {
@@ -48,7 +49,8 @@ class ManajemenProdukController extends Controller
             'nama_paket' => 'required'
         ]);
         Produk::create($request->all());
-        return redirect('/manajemen_produk')->with('status','data berhasil ditambahkan');
+        Alert::success('Berhasil', 'Data berhasil disimpan');
+        return redirect()->route('manajemen_produk.index');
     }
 
     /**

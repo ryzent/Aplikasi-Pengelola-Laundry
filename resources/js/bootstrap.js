@@ -17,6 +17,8 @@ try {
     require('moment');
     require('jquery.nicescroll');
     require('chart.js');
+    require('sweetalert2');
+    window.datepicker = require('bootstrap-daterangepicker');
 } catch (e) {}
 
 /**

@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->user()->role == "admin"){
-            return redirect()->route('admin.home');
+            return redirect()->route('admin.index');
         } else if (auth()->user()->role == 'owner') {
             return redirect()->route('owner.home');
         } else if (auth()->user()->role == 'kasir') {

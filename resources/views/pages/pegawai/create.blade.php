@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Golongan Pegawai</label>
-                                <select class="form-control" name="role">
+                                <select class="form-control select2" name="role">
                                     <option value="admin">Admin</option>
                                     <option value="kasir">Kasir</option>
                                     <option value="owner">Pemilik</option>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Cabang Toko</label>
-                                <select class="form-control" name="id_outlet">
+                                <select class="form-control select2" name="id_outlet">
                                     @foreach ($toko as $tk)
                                     <option value="{{$tk->id}}">{{$tk->nama}}</option>
                                     @endforeach

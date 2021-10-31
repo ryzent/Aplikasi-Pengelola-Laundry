@@ -8,6 +8,7 @@
 
     @include('includes.styles')
 
+
 </head>
 
 <body>
@@ -27,6 +28,7 @@
 
     @stack('prepend-script')
     @include('includes.scripts')
+    @include('sweetalert::alert')
     @stack('addon-script')
 
 </body>

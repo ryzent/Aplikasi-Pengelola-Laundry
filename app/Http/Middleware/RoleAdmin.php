@@ -20,6 +20,6 @@ class RoleAdmin
             return $next($request);
         }
 
-        return redirect('home')->with('error',"Anda bukan admin");
+        return redirect('login')->with('error',"Anda bukan admin");
     }
 }

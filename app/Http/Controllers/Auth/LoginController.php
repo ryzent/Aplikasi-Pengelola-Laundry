@@ -49,7 +49,7 @@ class LoginController extends Controller
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if(auth()->user()->role == 'admin') {
-                return redirect()->route('admin.home');
+                return redirect()->route('admin.index');
             } else if (auth()->user()->role == 'owner') {
                 return redirect()->route('owner.home');
             } else if (auth()->user()->role == 'kasir') {
@@ -57,7 +57,7 @@ class LoginController extends Controller
             } else {
                 return redirect()->route('home');
             }
-            
+
         } else{
             return redirect()->route('login')->with('error',"Email atau password salah!");
         }

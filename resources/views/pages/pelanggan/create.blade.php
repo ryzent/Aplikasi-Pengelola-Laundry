@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Manajemen Pelanggan')
+@section('title', 'Create | Manajemen Pelanggan')
 
 @section('content')
 
@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Jenis Kelamin</label>
-                                <select class="form-control" name="jenis_kelamin">
+                                <select class="form-control select2" name="jenis_kelamin">
                                     <option>Laki-Laki</option>
                                     <option>Perempuan</option>
                                 </select>
@@ -55,3 +55,11 @@
 </div>
 
 @endsection
+
+@push('addon-script')
+    <script>
+        $(document).ready(function() {
+            $('.jenis_kelamin').select2();
+        });
+    </script>
+@endpush

@@ -21,7 +21,7 @@
                         <h4>Total Cabang</h4>
                       </div>
                       <div class="card-body">
-                        10
+                        {{$toko}}
                       </div>
                     </div>
                   </div>
@@ -36,7 +36,7 @@
                         <h4>Total Pegawai</h4>
                       </div>
                       <div class="card-body">
-                        42
+                        {{$user}}
                       </div>
                     </div>
                   </div>
@@ -51,7 +51,7 @@
                         <h4>Total Member</h4>
                       </div>
                       <div class="card-body">
-                        1,201
+                        {{$member}}
                       </div>
                     </div>
                   </div>
@@ -66,7 +66,7 @@
                         <h4>Total Transaksi</h4>
                       </div>
                       <div class="card-body">
-                        47
+                        0
                       </div>
                     </div>
                   </div>
