@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -59,7 +60,8 @@ class LoginController extends Controller
             }
 
         } else{
-            return redirect()->route('login')->with('error',"Email atau password salah!");
+            Alert::error('Error','Gagal Masuk!');
+            return redirect()->route('login');
         }
     }
 }
