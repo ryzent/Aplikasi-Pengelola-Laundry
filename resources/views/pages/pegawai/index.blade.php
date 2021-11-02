@@ -73,8 +73,8 @@
                     name: 'email'
                 },
                 {
-                    data: 'id_outlet',
-                    name: 'id_outlet'
+                    data: 'toko.nama',
+                    name: 'toko.nama'
                 },
                 {
                     data: 'role',

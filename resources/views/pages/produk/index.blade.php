@@ -78,12 +78,13 @@
                     name: 'harga'
                 },
                 {
-                    data: 'id_outlet',
-                    name: 'id_outlet'
+                    data: 'toko.nama',
+                    name: 'toko.nama'
                 },
                 {
                     data: 'action',
                     name: 'action',
+                    align: 'center',
                     orderable: false,
                     searchable: false
                 },

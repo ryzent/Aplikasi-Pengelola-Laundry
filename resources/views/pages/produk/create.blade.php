@@ -9,7 +9,8 @@
             <h1>Tambah produk baru</h1>
         </div>
 
-
+        <a href="{{ route('manajemen_produk.index')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+            class="fas fa-arrow-left"></i>Kembali</a>
 
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">

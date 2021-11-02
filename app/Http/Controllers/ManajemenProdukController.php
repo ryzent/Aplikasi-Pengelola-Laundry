@@ -23,12 +23,16 @@ class ManajemenProdukController extends Controller
     }
 
     public function json(Request $request){
-        $member = Produk::all();
-        return DataTables::of($member)
-        ->addColumn('action', function ($row) {
-            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
-            return $btn;
-        })->toJson();
+        if ($request->ajax()) {
+            $member = Produk::select('*');
+            return DataTables::of($member->with('toko'))
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="manajemen_produk/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-edit text-white"></i></a>';
+                $btn = $btn.'<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></button>';
+                return $btn;
+            })->toJson();
+        }
+
     }
 
     public function create(){
@@ -76,7 +80,12 @@ class ManajemenProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produk = Produk::findOrFail($id);
+        $toko = Outlet::all();
+        return view('pages.produk.edit', [
+            'produk' => $produk,
+            'toko' => $toko
+        ]);
     }
 
     /**
@@ -88,7 +97,12 @@ class ManajemenProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $produk = Produk::findOrFail($id);
+
+        $produk->update($data);
+        Alert::success('Berhasil', 'Data berhasil diperbarui');
+        return redirect()->route('manajemen_produk.index');
     }
 
     /**

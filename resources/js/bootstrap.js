@@ -16,8 +16,10 @@ try {
     $('select').select2();
     require('moment');
     require('jquery.nicescroll');
+    require('jquery.pwstrength');
     require('chart.js');
     require('sweetalert2');
+    require('jquery.pwstrength');
     window.datepicker = require('bootstrap-daterangepicker');
 } catch (e) {}
 

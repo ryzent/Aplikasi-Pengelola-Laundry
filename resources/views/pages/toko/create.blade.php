@@ -3,47 +3,59 @@
 
 @section('content')
 
-    <div class="main-content">
-        <section class="section" style="margin-top: 0px">
-            <div class="section-header">
-                <h1>Tambah cabang toko baru</h1>
-            </div>
+<div class="main-content">
+    <section class="section" style="margin-top: 0px">
+        <div class="section-header">
+            <h1>Tambah cabang toko baru</h1>
+        </div>
 
+        <a href="{{ route('manajemen_outlet.index')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+                class="fas fa-arrow-left"></i>Kembali</a>
 
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                <form action="{{ route('manajemen_outlet.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-group">
-                          <label>Nama Cabang</label>
-                          <input type="text" class="form-control" name="nama">
-                        </div>
-                        <div class="form-group">
-                            <label>Alamat Cabang</label>
-                            <input type="text" class="form-control" name="alamat">
-                          </div>
-                        <div class="form-group">
-                          <label>Nomor Telepon</label>
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">
-                                <i class="fas fa-phone"></i>
-                              </div>
+                    <form action="{{ route('manajemen_outlet.store')}}" method="POST" class="needs-validation"
+                        novalidate="" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama Cabang</label>
+                                <input type="text" class="form-control" name="nama" required autofocus>
+                                <div class="invalid-feedback">
+                                    Harap isi nama cabang
+                                </div>
                             </div>
-                            <input type="text" class="form-control phone-number" name="tlp">
-                          </div>
+                            <div class="form-group">
+                                <label>Alamat Cabang</label>
+                                <input type="text" class="form-control" name="alamat" required autofocus>
+                                <div class="invalid-feedback">
+                                    Harap isi alamat cabang
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Nomor Telepon</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control phone-number" name="tlp" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Harap isi nomor telepon
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Simpan
+                            </button>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            Simpan
-                        </button>
-                      </div>
-                </form>
-                </div>
+                    </form>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
 @endsection

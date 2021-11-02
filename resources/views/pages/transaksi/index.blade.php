@@ -9,7 +9,7 @@
             <h1>Transaksi</h1>
         </div>
 
-        <a href="{{url('transaksi/create')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+        <a href="{{route('transaksi.create')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
             class="fas fa-plus"></i>Transaksi Baru</a>
 
 

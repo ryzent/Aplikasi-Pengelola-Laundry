@@ -19,8 +19,9 @@ class ManajemenPelangganController extends Controller
         $member = Member::all();
         return DataTables::of($member)
         ->addColumn('action', function ($row) {
-            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
-            $btn = $btn.'<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm">Edit</a>';
+            $btn = '<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-eye text-white"></i></i></a>';
+            $btn = $btn.'<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-success btn-sm"><i class="far fa-edit text-white"></i></a>';
+            $btn = $btn.'<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></button>';
             return $btn;
         })->toJson();
     }

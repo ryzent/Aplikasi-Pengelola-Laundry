@@ -9,25 +9,37 @@
             <h1>Edit member</h1>
         </div>
 
-
+        <a href="{{ route('manajemen_pelanggan.index')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+                class="fas fa-arrow-left"></i>Kembali</a>
 
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <form action="{{ route('manajemen_pelanggan.update', $member->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('manajemen_pelanggan.update', $member->id)}}" method="POST"
+                        class="needs-validation" novalidate="" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama" value="{{ $member->nama ?? old('nama') }}">
+                                <input type="text" class="form-control" name="nama"
+                                    value="{{ $member->nama ?? old('nama') }}" required autofocus>
+                                <div class="invalid-feedback">
+                                    Harap isi nama lengkap
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" class="form-control" name="alamat" value="{{ $member->alamat ?? old('alamat') }}">
+                                <input type="text" class="form-control" name="alamat"
+                                    value="{{ $member->alamat ?? old('alamat') }}" required autofocus>
+                                <div class="invalid-feedback">
+                                    Harap isi alamat
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Jenis Kelamin</label>
-                                <select class="form-control select2" name="jenis_kelamin" value="{{ $member->jenis_kelamin ?? old('jenis_kelamin') }}">
+                                <select class="form-control select2" name="jenis_kelamin"
+                                    value="{{ $member->jenis_kelamin ?? old('jenis_kelamin') }}">
                                     <option>Laki-Laki</option>
                                     <option>Perempuan</option>
                                 </select>
@@ -40,7 +52,11 @@
                                             <i class="fas fa-phone"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control phone-number" name="tlp" value="{{ $member->tlp ?? old('tlp') }}">
+                                    <input type="text" class="form-control phone-number" name="tlp"
+                                        value="{{ $member->tlp ?? old('tlp') }}" required autofocus>
+                                    <div class="invalid-feedback">
+                                        Harap isi nomor telepon
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -57,9 +73,10 @@
 @endsection
 
 @push('addon-script')
-    <script>
-        $(document).ready(function() {
-            $('.jenis_kelamin').select2();
-        });
-    </script>
+<script>
+    $(document).ready(function () {
+        $('.jenis_kelamin').select2();
+    });
+
+</script>
 @endpush

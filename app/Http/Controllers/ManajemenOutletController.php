@@ -20,7 +20,8 @@ class ManajemenOutletController extends Controller
         $member = Outlet::all();
         return DataTables::of($member)
         ->addColumn('action', function ($row) {
-            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
+            $btn = '<a href="manajemen_outlet/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-edit text-white"></i></a>';
+            $btn = $btn.'<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></button>';
             return $btn;
         })->toJson();
     }
@@ -65,7 +66,8 @@ class ManajemenOutletController extends Controller
      */
     public function edit($id)
     {
-        //
+        $toko = Outlet::findOrFail($id);
+        return view('pages.toko.edit', compact('toko'));
     }
 
     /**
@@ -77,7 +79,12 @@ class ManajemenOutletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $toko = Outlet::findOrFail($id);
+
+        $toko->update($data);
+        Alert::success('Berhasil', 'Data berhasil diperbarui');
+        return redirect()->route('manajemen_outlet.index');
     }
 
     /**
