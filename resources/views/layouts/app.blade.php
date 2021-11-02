@@ -13,8 +13,8 @@
 
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/components.css')}}">
 </head>
 
 <body>
@@ -30,6 +30,7 @@
     <!-- Template JS File -->
     <script src="{{ URL::asset('assets/js/scripts.js') }}"></script>
     <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+    @include('sweetalert::alert')
     @stack('addon-script')
 
 </body>
