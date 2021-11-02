@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleCashier
 {
@@ -16,10 +17,12 @@ class RoleCashier
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'kasir'){
+        if(! empty(auth()->user()->role) == 'kasir'){
             return $next($request);
-        }
+        } else {
 
-        return redirect('home')->with('error',"Anda bukan cashier");
+            Alert::error('Error', 'Invalid request!');
+            return redirect()->route('login');
+        }
     }
 }

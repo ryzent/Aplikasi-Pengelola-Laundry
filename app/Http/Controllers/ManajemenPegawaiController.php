@@ -22,13 +22,16 @@ class ManajemenPegawaiController extends Controller
     }
 
     public function json(Request $request){
-        $member = User::all();
-        return DataTables::of($member)
-        ->addColumn('action', function ($row) {
-            $btn = '<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm">Delete</button>';
-            $btn = $btn.'<a href="manajemen_pegawai/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm">Edit</a>';
-            return $btn;
-        })->toJson();
+        if ($request->ajax()) {
+            $member = User::select('*');
+            return DataTables::of($member->with('toko'))
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="manajemen_pegawai/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-eye text-white"></i></a>';
+                $btn = $btn.'<a href="manajemen_pegawai/'. $row->id .'/edit" class="m-1 edit btn btn-success btn-sm"><i class="far fa-edit text-white"></i></a>';
+                $btn = $btn.'<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></button>';
+                return $btn;
+            })->toJson();
+        }
     }
 
     public function create(){
@@ -54,11 +57,12 @@ class ManajemenPegawaiController extends Controller
         'role' => 'required',
         'id_outlet' => 'required'
         ]);
+        $password = request('password');
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'role' => $request['role'],
-            'password' => Hash::make($request['password']),
+            'password' => Hash::make($request[$password]),
             'id_outlet' => $request['id_outlet'],
         ]);
         Alert::success('Berhasil', 'Data berhasil disimpan');
@@ -101,7 +105,14 @@ class ManajemenPegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $password = request('password');
+        $data['password'] = Hash::make($password);
+        $users = User::findOrFail($id);
+
+        $users->update($data);
+        Alert::success('Berhasil', 'Data berhasil diperbarui');
+        return redirect()->route('manajemen_pegawai.index');
     }
 
     /**

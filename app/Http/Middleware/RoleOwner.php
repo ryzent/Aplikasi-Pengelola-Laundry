@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleOwner
 {
@@ -16,10 +17,12 @@ class RoleOwner
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'owner'){
+        if(! empty(auth()->user()->role) == 'owner'){
             return $next($request);
-        }
+        } else {
 
-        return redirect('home')->with('error',"Anda bukan owner");
+            Alert::error('Error', 'Invalid request!');
+            return redirect()->route('login');
+        }
     }
 }

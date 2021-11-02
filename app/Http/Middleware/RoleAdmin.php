@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleAdmin
 {
@@ -16,10 +17,15 @@ class RoleAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'admin'){
-            return $next($request);
-        }
 
-        return redirect('login')->with('error',"Anda bukan admin");
+        if(! empty(auth()->user()->role)){
+            if(auth()->user()->role == "admin"){
+                return $next($request);
+            }
+        } else {
+
+            Alert::error('Error', 'Invalid request!');
+            return redirect()->route('login');
+        }
     }
 }
