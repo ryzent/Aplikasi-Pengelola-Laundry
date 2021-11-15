@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function toko(){
         return $this->belongsTo(Outlet::class, 'id_outlet');
     }
+
+    public function role(){
+        return $this->belongsTo(Role::class, 'role');
+    }
 }

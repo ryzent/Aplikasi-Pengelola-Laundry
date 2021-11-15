@@ -16,17 +16,15 @@ class CreateTransaksiTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('id_outlet');
+            $table->char('id_outlet');
             $table->string('kode_invoice');
-            $table->integer('id_member');
-            $table->dateTime('tgl');
-            $table->dateTime('batas_waktu');
-            $table->dateTime('tgl_bayar');
-            $table->integer('biaya_tambahan');
-            $table->double('diskon');
-            $table->integer('pajak');
-            $table->enum('status',['baru','proses','selesai','diambil']);
-            $table->enum('dibayar',['dibayar','belum_dibayar']);
+            $table->string('nama');
+            $table->dateTime('tgl_masuk');
+            $table->dateTime('tgl_bayar')->nullable();
+            $table->double('potongan')->nullable();
+            $table->double('total_bayar')->nullable();
+            $table->integer('status');
+            $table->boolean('dibayar')->nullable();
             $table->integer('id_user');
 
             $table->timestamps();

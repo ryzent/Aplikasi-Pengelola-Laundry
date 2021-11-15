@@ -60,17 +60,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Golongan Pegawai</label>
-                                <select class="form-control select2" name="role"
-                                    value="{{ $user->role ?? old('name') }}">
-                                    <option value="admin">Admin</option>
-                                    <option value="kasir">Kasir</option>
-                                    <option value="owner">Pemilik</option>
+                                <select class="form-control select2" name="role">
+                                    @foreach ($role as $rl)
+                                    <option value="{{$rl->id}}">{{$rl->nama_role}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Cabang Toko</label>
                                 <select class="form-control select2" name="id_outlet"
-                                    value="{{ $user->id_outlet ?? old('name') }}">
+                                    value="{{ $user->id_outlet ?? old('id_outlet') }}">
                                     @foreach ($toko as $tk)
                                     <option value="{{$tk->id}}">{{$tk->nama}}</option>
                                     @endforeach

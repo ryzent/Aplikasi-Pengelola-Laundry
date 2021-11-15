@@ -19,23 +19,28 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Nama Produk</label>
+                                <label>Nama Barang</label>
                                 <input type="text" class="form-control" name="nama_paket">
                             </div>
                             <div class="form-group">
-                                <label>Harga Produk</label>
-                                <input type="text" class="form-control" name="harga">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis Produk</label>
+                                <label>Kategori</label>
                                 <select class="form-control select2" name="jenis">
-                                    <option value="kiloan">Kiloan</option>
-                                    <option value="selimut">Selimut</option>
-                                    <option value="bed_cover">Bed Cover</option>
-                                    <option value="kaos">Kaos</option>
-                                    <option value="lain">Lain-lain</option>
+                                    <option value="Kiloan">Kiloan</option>
+                                    <option value="Satuan">Satuan</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            Rp
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control currency" name="harga">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label>Cabang Toko</label>
                                 <select class="form-control select2" name="id_outlet">
@@ -58,3 +63,12 @@
 </div>
 
 @endsection
+
+@push('addon-script')
+    <script>
+    // var cleaveC = new Cleave('.currency', {
+    //     numeral: true,
+    //     numeralThousandsGroupStyle: 'thousand'
+    // });
+    </script>
+@endpush

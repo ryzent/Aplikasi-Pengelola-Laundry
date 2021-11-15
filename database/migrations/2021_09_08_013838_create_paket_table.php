@@ -18,8 +18,8 @@ class CreatePaketTable extends Migration
 
             $table->integer('id_outlet');
             $table->string('nama_paket');
-            $table->enum('jenis',['kiloan', 'selimut','bed_cover','kaos','lain']);
-            $table->integer('harga');
+            $table->string('jenis');
+            $table->double('harga');
 
             $table->timestamps();
         });

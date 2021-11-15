@@ -36,11 +36,92 @@
     </section>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="pelanggan_modal" tabindex="-1" aria-labelledby="pelanggan_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pelanggan_modalLabel">Info Pelanggan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" class="form-control" name="nama" id="nama" readonly>
+                    <div class="invalid-feedback">
+                        Harap isi nama lengkap
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <input type="text" class="form-control" name="alamat" id="alamat" readonly>
+                    <div class="invalid-feedback">
+                        Harap isi alamat
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <input type="text" class="form-control" name="jenis_kelamin" id="jenis_kelamin" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Nomor Telepon</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control phone-number" name="tlp" id="tlp" readonly>
+                        <div class="invalid-feedback">
+                            Harap isi nomor telepon
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="m-1 edit btn btn-success" id="edit">Ubah</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
 
 @push('addon-script')
 
 <script>
+
+    $(document).ready(function () {
+
+        $('body').on('click', '#detail_pelanggan', function (event) {
+
+            event.preventDefault();
+            let hrefs = $(this).attr('data-attr');
+
+            axios.get(hrefs)
+            .then(function (response) {
+                // handle success
+                document.getElementById("edit").href = "manajemen_pelanggan/ " + response.data.id + "/edit";
+
+                $('#nama').val(response.data.nama);
+                $('#alamat').val(response.data.alamat);
+                $('#jenis_kelamin').val(response.data.jenis_kelamin);
+                $('#tlp').val(response.data.tlp);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+        });
+
+    });
+
     $(function () {
 
         $('#pelanggan-table').DataTable({
@@ -79,20 +160,10 @@
                 },
             ],
         });
-        var oTable;
-        oTable = $('#pelanggan-table').dataTable();
-
-        $('.filter-select').change(function () {
-            oTable.fnFilter($(this).val());
-        });
     });
     $(document).ready(function () {
 
-        $('.filter-select').change(function () {
-            table.column($(this).data('column'))
-                .search($(this).val())
-                .draw();
-        });
+
 
         var id;
 

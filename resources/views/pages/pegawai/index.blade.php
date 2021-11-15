@@ -45,11 +45,81 @@
     </section>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="pegawai_modal" tabindex="-1" aria-labelledby="pegawai_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pegawai_modalLabel">Info Pegawai</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Nama Pegawai</label>
+                    <input type="text" class="form-control" name="name" id="nama" readonly>
+                    <div class="invalid-feedback">
+                        Harap isi bagian nama
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" id="email" readonly>
+                    <div class="invalid-feedback">
+                        Harap isi bagian email
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Golongan Pegawai</label>
+                    <input type="text" class="form-control" name="role" id="role" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Cabang Toko</label>
+                    <input type="text" class="form-control" name="outlet" id="outlet" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="m-1 edit btn btn-success" id="edit">Ubah</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
 
 @push('addon-script')
 <script>
+
+    $(document).ready(function () {
+
+        $('body').on('click', '#detail_pegawai', function (event) {
+
+            event.preventDefault();
+            let hrefs = $(this).attr('data-attr');
+
+            axios.get(hrefs)
+            .then(function (response) {
+                // handle success
+                document.getElementById("edit").href = "manajemen_pegawai/ " + response.data.id + "/edit";
+
+                $('#nama').val(response.data.name);
+                $('#email').val(response.data.email);
+                $('#role').val(response.data.role.nama_role);
+                $('#outlet').val(response.data.toko.nama);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+        });
+
+    });
+
     $(function () {
 
         $('#pegawai-table').DataTable({
@@ -77,8 +147,8 @@
                     name: 'toko.nama'
                 },
                 {
-                    data: 'role',
-                    name: 'role'
+                    data: 'role.nama_role',
+                    name: 'role.nama_role'
                 },
                 {
                     data: 'action',

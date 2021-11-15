@@ -11,15 +11,25 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('datatables.net-bs5');
+    require( 'datatables.net-bs5' )();
+    require( 'datatables.net-buttons-bs5' )();
+    require( 'datatables.net-buttons/js/buttons.html5.js' )();
+    require( 'datatables.net-buttons/js/buttons.print.js' )();
+    //require( 'datatables.net-responsive-bs5')();
+    require( 'datatables.net-searchbuilder-bs5' )();
+    require( 'datatables.net-searchpanes-bs5' )();
+    require( 'datatables.net-select-bs5' )();
+    require( 'jszip' );
+    require( 'pdfmake' );
     require('select2');
     $('select').select2();
     require('moment');
     require('jquery.nicescroll');
-    require('jquery.pwstrength');
     require('chart.js');
     require('sweetalert2');
-    require('jquery.pwstrength');
+    // require('@aacassandra/jquery.pwstrength');
+    // require('pwstrength-bootstrap');
+    require('cleave.js');
     window.datepicker = require('bootstrap-daterangepicker');
 } catch (e) {}
 

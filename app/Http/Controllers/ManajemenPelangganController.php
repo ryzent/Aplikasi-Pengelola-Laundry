@@ -12,14 +12,17 @@ class ManajemenPelangganController extends Controller
     //
     public function index(){
         $member = Member::all();
+        // $detail_member = Member::findOrFail();
         return view('pages.pelanggan.index',compact('member'));
     }
 
     public function json(Request $request){
         $member = Member::all();
+        // $md = md5('jes'.serialize('jes'));
+        // return response()->json($member);
         return DataTables::of($member)
         ->addColumn('action', function ($row) {
-            $btn = '<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-eye text-white"></i></i></a>';
+            $btn = '<a id="detail_pelanggan" data-bs-toggle="modal" data-bs-target="#pelanggan_modal" data-attr="'.route('manajemen_pelanggan.show', $row->id).'" class="m-1 btn btn-primary btn-sm"><i class="far fa-eye text-white"></i></a>';
             $btn = $btn.'<a href="manajemen_pelanggan/'. $row->id .'/edit" class="m-1 edit btn btn-success btn-sm"><i class="far fa-edit text-white"></i></a>';
             $btn = $btn.'<button type="button" name="delete" id="'.$row->id.'" class="m-1 delete btn btn-danger btn-sm"><i class="far fa-trash-alt text-white"></i></button>';
             return $btn;
@@ -59,6 +62,8 @@ class ManajemenPelangganController extends Controller
     public function show($id)
     {
         //
+        $member = Member::findOrFail($id);
+        return response()->json($member);
     }
 
     /**

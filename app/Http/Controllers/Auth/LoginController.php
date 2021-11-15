@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
@@ -49,14 +50,16 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if(auth()->user()->role == 'admin') {
+            if(Auth::check() && Auth::user()->role == 1) {
+                return redirect()->route('sadmin.index');
+            }  else if(Auth::check() && Auth::user()->role == 2){
                 return redirect()->route('admin.index');
-            } else if (auth()->user()->role == 'owner') {
+            }else if (Auth::check() && Auth::user()->role == 3) {
                 return redirect()->route('owner.home');
-            } else if (auth()->user()->role == 'kasir') {
+            } else if (Auth::check() && Auth::user()->role == 4) {
                 return redirect()->route('cashier.home');
             } else {
-                return redirect()->route('home');
+                return redirect()->route('/');
             }
 
         } else{

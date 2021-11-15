@@ -24,7 +24,7 @@ class ManajemenProdukController extends Controller
 
     public function json(Request $request){
         if ($request->ajax()) {
-            $member = Produk::select('*');
+            $member = Produk::where('jenis', 'Kiloan');
             return DataTables::of($member->with('toko'))
             ->addColumn('action', function ($row) {
                 $btn = '<a href="manajemen_produk/'. $row->id .'/edit" class="m-1 edit btn btn-primary btn-sm"><i class="far fa-edit text-white"></i></a>';
