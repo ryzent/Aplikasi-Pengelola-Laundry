@@ -14,7 +14,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-primary">
-                        <i class="far fa-user"></i>
+                        <i class="fas fa-store-alt"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
@@ -22,6 +22,21 @@
                         </div>
                         <div class="card-body">
                             {{$toko}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card card-statistic-1">
+                    <div class="card-icon bg-warning">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Total Produk</h4>
+                        </div>
+                        <div class="card-body">
+                            {{$member}}
                         </div>
                     </div>
                 </div>
@@ -43,30 +58,15 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
-                    <div class="card-icon bg-warning">
-                        <i class="far fa-file"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Total Member</h4>
-                        </div>
-                        <div class="card-body">
-                            {{$member}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <div class="card card-statistic-1">
                     <div class="card-icon bg-success">
-                        <i class="fas fa-circle"></i>
+                        <i class="fas fa-cash-register"></i>
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
                             <h4>Total Transaksi</h4>
                         </div>
                         <div class="card-body">
-                            0
+                            {{count($transaksi)}}
                         </div>
                     </div>
                 </div>
@@ -128,33 +128,46 @@
                         <div class="tickets-list">
 
                             <a href="#" class="ticket-item">
-                                <img class="mr-3 rounded" width="50"
-                                    src="{{ asset('../assets/img/products/product-1-50.png')}} " alt="product">
-                                <div class="ticket-title">
-                                    <h4>Nama Toko</h4>
-                                </div>
-                                <div class="ticket-info">
-                                    <div>{{ auth()->user()->toko['nama'] }}</div>
-                                </div>
-                            </a>
-                            <a href="#" class="ticket-item">
-                                <img class="mr-3 rounded" width="50"
-                                    src="{{ asset('../assets/img/products/product-2-50.png')}} " alt="product">
-                                <div class="ticket-title">
-                                    <h4>Alamat Toko</h4>
-                                </div>
-                                <div class="ticket-info">
-                                    <div>{{ auth()->user()->toko['alamat']}}</div>
+                                <div class="row">
+                                    <div class="rounded card-icon bg-primary col-2" width="50">
+                                        <i class="fas fa-store-alt"></i>
+                                    </div>
+                                    <div class="col align-self-start">
+                                        <div class="ticket-title">
+                                            <h4>Nama Toko</h4>
+                                        </div>
+                                        <div class="ticket-info">
+                                            <div>{{ auth()->user()->toko['nama'] }}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </a>
                             <a href="#" class="ticket-item">
-                                <img class="mr-3 rounded" width="50"
+                                <div class="row">
+                                    <img class="rounded col-2" width="50"
+                                        src="{{ asset('../assets/img/products/product-2-50.png')}} " alt="product">
+                                    <div class="col align-self-start">
+                                        <div class="ticket-title">
+                                            <h4>Alamat Toko</h4>
+                                        </div>
+                                        <div class="ticket-info">
+                                            <div>{{ auth()->user()->toko['alamat']}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="ticket-item">
+                                <div class="row">
+                                <img class="rounded col-2" width="50"
                                     src="{{ asset('../assets/img/products/product-3-50.png')}} " alt="product">
+                                    <div class="col align-self-start">
                                 <div class="ticket-title">
                                     <h4>Nomor telepon</h4>
                                 </div>
                                 <div class="ticket-info">
                                     <div>{{ auth()->user()->toko['tlp']}}</div>
+                                </div>
+                                </div>
                                 </div>
                             </a>
                         </div>
@@ -168,5 +181,43 @@
 @endsection
 
 @push('addon-script')
+{{-- <script src="assets/modules/chart.min.js"></script> --}}
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
 
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 50, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 @endpush

@@ -65,7 +65,7 @@ class ManajemenPegawaiController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'role' => $request['role'],
-            'password' => Hash::make($request[$password]),
+            'password' => Hash::make($request['password']),
             'id_outlet' => $request['id_outlet'],
         ]);
         Alert::success('Berhasil', 'Data berhasil disimpan');

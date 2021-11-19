@@ -12,7 +12,9 @@ use App\Http\Controllers\ManajemenProdukController;
 use App\Http\Controllers\ManajemenPegawaiController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\RiwayatTransaksi;
 use App\Http\Controllers\VoucherController;
+use App\Models\Transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +59,7 @@ Route::get('home', [HomeController::class, 'index']);
         Route::get('manajemen_pegawai/destroy/{id}', [ManajemenPegawaiController::class, 'destroy']);
         Route::resource('manajemen_pegawai', ManajemenPegawaiController::class);
 
+        Route::get('transaksi/json', [TransaksiController::class, 'json']);
         Route::resource('transaksi', TransaksiController::class);
         Route::resource('laporan', LaporanController::class);
         Route::resource('voucher', VoucherController::class);
@@ -102,8 +105,12 @@ Route::prefix('kasir')
     Route::get('manajemen_pelanggan/json', [ManajemenPelangganController::class, 'json']);
     Route::get('manajemen_pelanggan/destroy/{id}', [ManajemenPelangganController::class, 'destroy']);
     Route::resource('manajemen_pelanggan', ManajemenPelangganController::class);
-    Route::post('transaksi/store-transaksi', [TransaksiController::class, 'storeTransaksi']);
+    //Route::post('transaksi/store-transaksi', [TransaksiController::class, 'storeTransaksi']);
     Route::resource('transaksi', TransaksiController::class);
+    Route::get('riwayat-transaksi/delete/{id}', [RiwayatTransaksi::class, 'destroy']);
+    Route::post('riwayat-transaksi/update-status', [RiwayatTransaksi::class, 'updateStatus']);
+    Route::post('riwayat-transaksi/bayar-transaksi', [RiwayatTransaksi::class, 'bayarTransaksi']);
+    Route::resource('riwayat-transaksi', RiwayatTransaksi::class);
     Route::resource('laporan', LaporanController::class);
 });
 

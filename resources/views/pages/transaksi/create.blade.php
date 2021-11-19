@@ -9,10 +9,14 @@
             <h1>Transaksi</h1>
         </div>
 
+        <a href="{{ route('transaksi.index')}}" class="btn btn-icon icon-left btn-primary mb-4"><i
+            class="fas fa-arrow-left"></i>Kembali</a>
+
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <form action="store-transaksi" method="POST">
+                    <form action="{{ route('transaksi.store') }}"method="POST" class="needs-validation"
+                    novalidate="" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Toko</label>
@@ -27,6 +31,10 @@
                         <div class="form-group">
                             <label>Nama</label>
                             <input type="text" class="form-control" name="nama" value="{{ (isset($transaksi)) ? $nama : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal barang masuk</label>
+                            <input type="date" class="form-control datepicker" name="tgl_masuk">
                         </div>
                         <div class="form-group">
                             <label>Barang</label>
@@ -61,7 +69,7 @@
                         </button>
                     </form>
                 </div>
-                <div class="card-body table-responsive-sm">
+                {{-- <div class="card-body table-responsive-sm">
                     <table id="produk-table-transaksi" class="table table-bordered" width="100%" collspacing="0">
                         <thead>
                             <tr>
@@ -79,7 +87,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$transaksi[$i]}}</td>
                                 </tr>
-                            @endfor --}}
+                            @endfor
                             @foreach ($transaksi as $item)
                             @for ($i = 0; $i <= count($transaksi); $i++)
 
@@ -92,7 +100,7 @@
                                 </td> --}}
                                 {{-- <script>
                                     console.log({{$transaksi}});
-                                </script> --}}
+                                </script>
                                 <td>{{$item['barang'][$i]}}</td>
                                 <td>{{$item['banyak'][$i]}}</td>
                                 <td>{{$item['harga'][$i]}}</td>
@@ -102,7 +110,7 @@
                             @endif
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -112,9 +120,9 @@
 
 @push('addon-script')
 
-{{-- <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
 
-<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script> --}}
+<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script>
 
 <script>
     $(document).ready(function () {
@@ -127,7 +135,7 @@
         });
     });
     $('.filter-satuan').change(function () {
-        if (this.value == "kiloan") {
+        if (this.value == "kg") {
             document.getElementById("satuan").innerHTML = "Kg";
         } else {
             document.getElementById("satuan").innerHTML = "Pcs";

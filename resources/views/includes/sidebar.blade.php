@@ -35,6 +35,9 @@
             <li class="nav-item {{ (request()->segment(2) == 'transaksi') ? 'active' : '' }}">
                 <a href="{{ route('transaksi.index') }}" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
             </li>
+            <li class="nav-item {{ (request()->segment(2) == 'riwayat-transaksi') ? 'active' : '' }}">
+                <a href="{{ route('riwayat-transaksi.index') }}" class="nav-link"><i class="fas fa-receipt"></i></i> <span>Riwayat Transaksi</span></a>
+            </li>
             <li class="nav-item {{ (request()->segment(2) == 'laporan') ? 'active' : '' }}">
                 <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>

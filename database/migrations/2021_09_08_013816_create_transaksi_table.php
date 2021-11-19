@@ -13,17 +13,17 @@ class CreateTransaksiTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
 
-            $table->char('id_outlet');
-            $table->string('kode_invoice');
+            $table->integer('id_outlet');
+            $table->char('kode_invoice');
             $table->string('nama');
             $table->dateTime('tgl_masuk');
             $table->dateTime('tgl_bayar')->nullable();
             $table->double('potongan')->nullable();
             $table->double('total_bayar')->nullable();
-            $table->integer('status');
+            $table->integer('id_status');
             $table->boolean('dibayar')->nullable();
             $table->integer('id_user');
 

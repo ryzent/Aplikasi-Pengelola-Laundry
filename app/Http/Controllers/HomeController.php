@@ -30,9 +30,9 @@ class HomeController extends Controller
         } else if(Auth::check() && Auth::user()->role == 2){
             return redirect()->route('admin.index');
         }else if (Auth::check() && Auth::user()->role == 3) {
-            return redirect()->route('4');
+            return redirect()->route('cashier.home');
         } else if (Auth::check() && Auth::user()->role == 4) {
-            return redirect()->route('3');
+            return redirect()->route('owner.home');
         } else {
             return redirect()->route('home');
         }
