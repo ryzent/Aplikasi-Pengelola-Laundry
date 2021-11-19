@@ -12,16 +12,6 @@
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="col-2 ">
-                            <select class="form-control filter-select select2" name="id_status">
-                                <option value="0">Filter Status</option>
-                                @foreach ($status as $ss)
-                                <option value="{{ $ss->id }}">{{ $ss->status }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="transaksi-table" class="table table-bordered" width="100%" collspacing="0">
@@ -44,9 +34,7 @@
                                         <td>{{ date('Y-m-d', strtotime($tr->tgl_masuk))}} </td>
                                         <td class="">
                                             @if ($tr->id_status == 3)
-                                            <span class="btn btn-primary btn-sm text-white">Selesai</span>
-                                            @elseif ($tr->id_status == 4)
-                                            <span class="btn btn-success btn-sm ">Diambil</span>
+                                            <div class="badge badge-success">Selesai</div>
                                             @else
                                             {{-- {{ $tr->status['status']}} --}}
                                             <select class="select-status form-control" name="status" id="select_status" data-id="{{ $tr->kode_invoice}}"
@@ -145,29 +133,6 @@
             "bFilter": true,
             "bInfo": true
 
-        });
-
-        $('.filter-select').change(function () {
-            var table = $('#transaksi-table').DataTable();
-            var value = $(this).val();
-            if(value == "1"){
-                table.search( "Baru" ).draw();
-            }
-            if(value == "2"){
-                table.search( "Proses" ).draw();
-            }
-            if(value == "0"){
-                table.search( "" ).draw();
-            }
-            // if(value == "1"){
-            //     table.search( "Baru" ).draw();
-            // } else if(value == "2"){
-            //     table.search( "Proses" ).draw();
-            // } else if(value == "3"){
-            //     table.search( "Selesai" ).draw();
-            // } else{
-            //     table.search( "" ).draw();
-            // }
         });
 
         $('body').on('click', '#detail_transaksi', function (event) {

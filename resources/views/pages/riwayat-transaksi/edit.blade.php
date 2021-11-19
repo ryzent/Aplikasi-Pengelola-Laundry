@@ -127,6 +127,10 @@
                                 value="{{ $transaksi->kode_invoice }}">
                         </div>
                         <div class="form-group">
+                            <label>Tanggal dibayar</label>
+                            <input type="text" class="form-control datepicker" name="tgl_bayar" readonly>
+                        </div>
+                        <div class="form-group">
                             <label>Harga yang dibayar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -165,6 +169,10 @@
 @endsection
 
 @push('addon-script')
+<link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+
+<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }} "></script>
+
 <link rel="stylesheet" href="{{ asset('assets/modules/izitoast/css/iziToast.min.css') }}">
 
 <script src="{{ asset('assets/modules/izitoast/js/iziToast.min.js') }}"></script>

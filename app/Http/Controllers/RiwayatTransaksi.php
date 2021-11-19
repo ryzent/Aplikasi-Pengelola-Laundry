@@ -7,7 +7,8 @@ use App\Models\Status;
 use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
 use App\Models\Outlet;
-
+use DateTimeZone;
+use DateTime;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RiwayatTransaksi extends Controller
@@ -19,7 +20,7 @@ class RiwayatTransaksi extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::where('id_status', '!=', '4')->get();
+        $transaksi = Transaksi::where('id_status', '!=', '3')->get();
         $status = Status::all();
         return view('pages.riwayat-transaksi.index',[
             'transaksi' => $transaksi,
@@ -91,16 +92,19 @@ class RiwayatTransaksi extends Controller
         //
         $data = $request->all();
         $transaksi = Transaksi::findOrFail($id);
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime();
+        $date->setTimeZone($timezone);
         $tgl = null;
         $dibayar = 0;
 
         if($request->input('status') == 3){
-            $tgl = date('Y-m-d');
+            $tgl = $date->format('d-m-Y H:i:s');
 
         }
 
         if($request->input('status') == 4){
-            $tgl = date('Y-m-d');
+            $tgl = $date->format('d-m-Y H:i:s');
             $dibayar = 1;
 
         }
@@ -119,9 +123,12 @@ class RiwayatTransaksi extends Controller
 
     public function updateStatus(Request $request){
         $tgl = null;
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime();
+        $date->setTimeZone($timezone);
 
         if($request->input('id_status') == 3){
-            $tgl = date('Y-m-d');
+            $tgl = $date->format('d-m-Y H:i:s');
 
         }
 
@@ -136,13 +143,16 @@ class RiwayatTransaksi extends Controller
 
     public function bayarTransaksi(Request $request){
         $kode_invoice = $request->input('kode_invoice');
-        $tgl = date('Y-m-d');
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime();
+        $date->setTimeZone($timezone);
+        $tgl = $date->format('d-m-Y H:i:s');
 
         Transaksi::where('kode_invoice', '=', $kode_invoice)->update([
-            'id_status' => '4',
-            'dibayar' => '1',
-            'total_bayar' => $request->input('bayar_total'),
             'tgl_bayar' => $tgl,
+            'id_status' => '3',
+            'total_bayar' => $request->input('bayar_total'),
+            'dibayar' => '1',
 
         ]);
         Alert::success('Berhasil!', 'Pembayaran berhasil dilakukan!');
