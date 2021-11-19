@@ -14,7 +14,6 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\RiwayatTransaksi;
 use App\Http\Controllers\VoucherController;
-use App\Models\Transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,5 +117,7 @@ Route::prefix('pemilik')
 ->middleware('auth')
 ->group(function(){
         Route::get('/', [OwnerController::class, 'index'])->name('owner.home');
+        Route::post('laporan/tampilkan-laporan', [LaporanController::class, 'tampilkanLaporan']);
+        Route::get('laporan/pdf-laporan', [LaporanController::class, 'cetakPDF']);
         Route::resource('laporan', LaporanController::class);
 });
