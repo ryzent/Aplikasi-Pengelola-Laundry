@@ -149,7 +149,7 @@ class RiwayatTransaksi extends Controller
         $tgl = $date->format('d-m-Y H:i:s');
 
         Transaksi::where('kode_invoice', '=', $kode_invoice)->update([
-            'tgl_bayar' => $tgl,
+            'tgl_bayar' => $request->input('tgl_bayar'),
             'id_status' => '3',
             'total_bayar' => $request->input('bayar_total'),
             'dibayar' => '1',

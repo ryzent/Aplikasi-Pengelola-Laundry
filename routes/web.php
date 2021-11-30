@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ManajemenOutletController;
 use App\Http\Controllers\ManajemenPelangganController;
@@ -26,9 +27,8 @@ use App\Http\Controllers\VoucherController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingController::class, 'index']);
+Route::post('/get', [LandingController::class, 'statusTransaksi']);
 
 Auth::routes();
 
@@ -121,3 +121,5 @@ Route::prefix('pemilik')
         Route::get('laporan/pdf-laporan', [LaporanController::class, 'cetakPDF']);
         Route::resource('laporan', LaporanController::class);
 });
+
+

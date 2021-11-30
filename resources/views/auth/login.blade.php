@@ -8,8 +8,7 @@
             <div class="p-4 m-3">
                 <img src="../assets/img/stisla-fill.svg" alt="logo" width="80"
                     class="shadow-light rounded-circle mb-5 mt-2">
-                <h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold">Laundry
-                        Sejahtera</span></h4>
+                <h4 class="text-dark font-weight-normal">Selamat Datang di <span class="font-weight-bold">Aplikasi Manajemen Laundry</span></h4>
                 <p class="text-muted">Sebelum anda mulai, anda harus masuk terlebih dahulu dengan akun anda.</p>
 
                 <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">

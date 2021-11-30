@@ -78,10 +78,10 @@
 @endsection
 
 @push('addon-script')
-<script src="{{ asset("assets/modules/bootstrap/js/bootstrap.min.js") }}"></script>
+{{-- <script src="{{ asset("assets/modules/bootstrap/js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("assets/js/stisla.js") }}"></script>
 
-<script src="{{ asset("assets/js/scripts.js") }}"></script>
+<script src="{{ asset("assets/js/scripts.js") }}"></script> --}}
 <script>
     $(function () {
 

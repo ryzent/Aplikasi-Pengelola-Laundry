@@ -13,15 +13,15 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="menu-header">Manajemen Pelanggan</li>
+            {{-- <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item {{ (request()->segment(2) == 'manajemen_pelanggan') ? 'active' : '' }}">
                 <a href="{{ route('manajemen_pelanggan.index')}}" class="nav-link "><i class="fas fa-users"></i><span>Manajemen
                     Pelanggan</span></a>
-            </li>
-            {{-- <li class="nav-item {{ (request()->segment(2) == 'voucher') ? 'active' : '' }}">
-                <a href="{{ route('voucher.index')}}" class="nav-link "><i class="fas fa-ticket-alt"></i><span>Voucher</span></a>
             </li> --}}
             <li class="menu-header">Manajemen Toko</li>
+            <li class="nav-item {{ (request()->segment(2) == 'voucher') ? 'active' : '' }}">
+                <a href="{{ route('voucher.index')}}" class="nav-link "><i class="fas fa-ticket-alt"></i><span>Voucher</span></a>
+            </li>
             <li class="nav-item {{ (request()->segment(2) == 'manajemen_outlet') ? 'active' : '' }}">
                 <a href="{{ route('manajemen_outlet.index')}}" class="nav-link"><i class="fas fa-store"></i> <span>Manajemen Outlet</span></a>
             </li>
@@ -47,11 +47,11 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="menu-header">Manajemen Pelanggan</li>
+            {{-- <li class="menu-header">Manajemen Pelanggan</li>
             <li class="nav-item {{ (request()->segment(2) == 'manajemen_pelanggan') ? 'active' : '' }}">
                 <a href="{{ route('manajemen_pelanggan.index')}}" class="nav-link "><i class="fas fa-users"></i><span>Manajemen
                     Pelanggan</span></a>
-            </li>
+            </li> --}}
             <li class="nav-item {{ (request()->segment(2) == 'voucher') ? 'active' : '' }}">
                 <a href="{{ route('voucher.index')}}" class="nav-link "><i class="fas fa-ticket-alt"></i><span>Voucher</span></a>
             </li>
@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li class="menu-header">Transaksi</li>
-            <li class="nav-item {{ (request()->is('laporan')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->segment(2) == 'laporan') ? 'active' : '' }}">
                 <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
 
@@ -90,16 +90,19 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="menu-header">Manajemen Pelanggan</li>
-            <li class="nav-item {{ (request()->segment(1) == 'manajemen_pelanggan') ? 'active' : '' }}">
+            {{-- <li class="menu-header">Manajemen Pelanggan</li>
+            <li class="nav-item {{ (request()->segment(2) == 'manajemen_pelanggan') ? 'active' : '' }}">
                 <a href="{{ route('manajemen_pelanggan.index') }}" class="nav-link"><i class="fas fa-users"></i><span>Manajemen
                         Pelanggan</span></a>
-            </li>
+            </li> --}}
             <li class="menu-header">Transaksi</li>
-            <li class="nav-item {{ (request()->is('transaksi')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->segment(2) == 'transaksi') ? 'active' : '' }}">
                 <a href="{{ route('transaksi.index') }}" class="nav-link"><i class="fas fa-cash-register"></i> <span>Entri Transaksi</span></a>
             </li>
-            <li class="nav-item {{ (request()->is('laporan')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->segment(2) == 'riwayat-transaksi') ? 'active' : '' }}">
+                <a href="{{ route('riwayat-transaksi.index') }}" class="nav-link"><i class="fas fa-receipt"></i></i> <span>Riwayat Transaksi</span></a>
+            </li>
+            <li class="nav-item {{ (request()->segment(2) == 'laporan') ? 'active' : '' }}">
                 <a href="{{ route('laporan.index') }}" class="nav-link"><i class="fas fa-file-alt"></i> <span>Laporan</span></a>
             </li>
             @endif

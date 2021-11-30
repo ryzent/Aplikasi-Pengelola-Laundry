@@ -37,15 +37,15 @@
                                             <div class="badge badge-success">Selesai</div>
                                             @else
                                             {{-- {{ $tr->status['status']}} --}}
-                                            <select class="select-status form-control" name="status" id="select_status" data-id="{{ $tr->kode_invoice}}"
-                                            data-val="{{ $tr->id_status }}">
-                                            @foreach ($status as $ss)
-                                            @if ($tr->id_status == $ss->id)
-                                            <option selected value="{{$ss->id}}">{{$ss->status}}</option>
-                                            @else
-                                            <option value="{{$ss->id}}">{{$ss->status}}</option>
-                                            @endif
-                                            @endforeach
+                                            <select class="select-status form-control" name="status" id="select_status"
+                                                data-id="{{ $tr->kode_invoice}}" data-val="{{ $tr->id_status }}">
+                                                @foreach ($status as $ss)
+                                                @if ($tr->id_status == $ss->id)
+                                                <option selected value="{{$ss->id}}">{{$ss->status}}</option>
+                                                @else
+                                                <option value="{{$ss->id}}">{{$ss->status}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                             @endif
                                         </td>
@@ -143,12 +143,13 @@
             axios.get(hrefs)
                 .then(function (response) {
                     // handle success
-                    document.getElementById("edit").href = "riwayat-transaksi/" + response.data[0][0].id +
+                    document.getElementById("edit").href = "riwayat-transaksi/" + response.data[0][
+                            0].id +
                         "/edit";
                     var tgl = moment(response.data[0][0].tgl_masuk).format("YYYY-MM-DD");
                     $('#kode_invoice').val(response.data[0][0].kode_invoice);
                     $('#nama').val(response.data[0][0].nama);
-                    $('#tgl_masuk').val( tgl);
+                    $('#tgl_masuk').val(tgl);
                     $('#barang').val(response.data[1][0].paket.nama_paket);
                     $('#jumlah').val(response.data[1][0].banyak);
                     $('#status').val(response.data[0][0].status.status);
@@ -163,23 +164,23 @@
         });
 
         $('.delete-confirm').on('click', function (event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        Swal.fire({
-            title: 'Apakah kamu yakin?',
-            text: "Data transaksi ini akan dihapus",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#6777ef',
-            cancelButtonColor: '#fb160a',
-            confirmButtonText: 'Ya, hapus',
-            cancelButtonText: 'Tidak',
-        }).then(function (value) {
-            if (value) {
-                window.location.href = url;
-            }
+            event.preventDefault();
+            const url = $(this).attr('href');
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "Data transaksi ini akan dihapus",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#6777ef',
+                cancelButtonColor: '#fb160a',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Tidak',
+            }).then(function (value) {
+                if (value) {
+                    window.location.href = url;
+                }
+            });
         });
-    });
 
     });
 
@@ -194,28 +195,30 @@
             cancelButtonColor: '#fb160a',
             confirmButtonText: 'Ya',
             cancelButtonText: 'Tidak',
-        }).then((result) =>  {
+        }).then((result) => {
             if (result.isConfirmed) {
                 let val = $(this).val();
-                axios.post('riwayat-transaksi/update-status', {kode_invoice: kode_invoice, id_status: val})
-                .then(function (response){
-                    iziToast.success({
-                        title: 'Berhasil!',
-                        message: 'Status berhasil diperbarui!',
-                        position: 'topRight'
+                axios.post('riwayat-transaksi/update-status', {
+                        kode_invoice: kode_invoice,
+                        id_status: val
+                    })
+                    .then(function (response) {
+                        iziToast.success({
+                            title: 'Berhasil!',
+                            message: 'Status berhasil diperbarui!',
+                            position: 'topRight'
+                        });
+                        this.output = response.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
                     });
-                    this.output = response.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            } else{
+            } else {
                 $(this).val($(this).data('val'));
                 return;
             }
         });
     });
-
 
 </script>
 @endpush

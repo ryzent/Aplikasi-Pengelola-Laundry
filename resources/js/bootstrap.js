@@ -27,6 +27,7 @@ try {
     require('jquery.nicescroll');
     require('chart.js');
     require('sweetalert2');
+    require('@lottiefiles/lottie-player');
     // require('@aacassandra/jquery.pwstrength');
     // require('pwstrength-bootstrap');
     require('cleave.js');

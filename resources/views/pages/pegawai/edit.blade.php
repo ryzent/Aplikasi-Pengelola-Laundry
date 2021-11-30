@@ -62,7 +62,11 @@
                                 <label>Golongan Pegawai</label>
                                 <select class="form-control select2" name="role">
                                     @foreach ($role as $rl)
+                                    @if ($user->role == $rl->id)
+                                    <option selected value="{{$rl->id}}">{{$rl->nama_role}}</option>
+                                    @else
                                     <option value="{{$rl->id}}">{{$rl->nama_role}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -71,7 +75,11 @@
                                 <select class="form-control select2" name="id_outlet"
                                     value="{{ $user->id_outlet ?? old('id_outlet') }}">
                                     @foreach ($toko as $tk)
+                                    @if ($user->id_outlet == $tk->id)
+                                    <option selected value="{{$tk->id}}">{{$tk->nama}}</option>
+                                    @else
                                     <option value="{{$tk->id}}">{{$tk->nama}}</option>
+                                    @endif
                                     @endforeach
 
                                 </select>
