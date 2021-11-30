@@ -30,6 +30,7 @@
     },
     "dependencies": {
         "@aacassandra/jquery.pwstrength": "^0.0.1",
+        "@lottiefiles/lottie-player": "^1.4.5",
         "bootstrap-daterangepicker": "^3.1.0",
         "bootstrap-timepicker": "^0.5.2",
         "chart.js": "^3.5.1",
